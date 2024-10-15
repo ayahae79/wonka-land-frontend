@@ -1,5 +1,6 @@
 import axios from "axios"
 import React, { useState } from "react"
+import { Link } from "react-router-dom"
 const BASE_URL = "http://localhost:3000"
 const CreateGameForm = () => {
   const [name, setName] = useState("")
@@ -22,8 +23,13 @@ const CreateGameForm = () => {
       }
       const response = await axios.post(`${BASE_URL}/game/games`, formData)
       console.log("saved")
+      setName("")
+      setHeight("")
+      setWeight("")
+      setAge("")
+      setMidical_condition("")
+      setImage("")
 
-      
       return response.data
 
     } catch (error) {
@@ -87,7 +93,8 @@ const CreateGameForm = () => {
         />
       </label>
       <br />
-      <button type="submit">Create Game</button>
+      <Link to={"/games"}>
+      <button type="submit">Create Game</button></Link>
     </form>
   )
 }

@@ -1,19 +1,15 @@
-
 import React, { useState, useEffect } from "react"
 import GameCard from "../components/GameCard"
-import GameDetails from "./GameDetails"
 import axios from "axios"
 import { Link } from "react-router-dom"
 
 const BASE_URL = "http://localhost:3000"
-
 
 const GameList = () => {
   const [games, setGames] = useState([])
   const [selectedGame, setSelectedGame] = useState(null)
 
   useEffect(() => {
-
     getGames()
   }, [])
 
@@ -31,7 +27,7 @@ const GameList = () => {
       <h1>Game List</h1>
       <ul>
         {games.map((game) => (
-          <Link to={"/games/:Id"}>
+          <Link to={`/games/${game._id}`}>
             <li key={game._id}>
               <GameCard game={game} handleGameClick={handleGameClick} />
             </li>
