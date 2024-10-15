@@ -1,8 +1,10 @@
 import axios from "axios"
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 const BASE_URL = "http://localhost:3000"
 const CreateGameForm = () => {
+  let navigate = useNavigate()
+
   const [name, setName] = useState("")
   const [height, setHeight] = useState("")
   const [weight, setWeight] = useState("")
@@ -21,7 +23,7 @@ const CreateGameForm = () => {
         midical_condition,
         image,
       }
-      const response = await axios.post(`${BASE_URL}/game/games`, formData)
+      await axios.post(`${BASE_URL}/game/games`, formData)
       console.log("saved")
       setName("")
       setHeight("")
@@ -30,8 +32,7 @@ const CreateGameForm = () => {
       setMidical_condition("")
       setImage("")
 
-      return response.data
-
+      navigate("/games")
     } catch (error) {
       console.error(error)
       // You can also display an error message to the user here
@@ -93,8 +94,7 @@ const CreateGameForm = () => {
         />
       </label>
       <br />
-      <Link to={"/games"}>
-      <button type="submit">Create Game</button></Link>
+      <button type="submit">Create Game</button>
     </form>
   )
 }
