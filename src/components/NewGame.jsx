@@ -39,63 +39,66 @@ const CreateGameForm = () => {
     }
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:
-        <input
-          type="text"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Height:
-        <input
-          type="text"
-          value={height}
-          onChange={(event) => setHeight(event.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Weight:
-        <input
-          type="text"
-          value={weight}
-          onChange={(event) => setWeight(event.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Age:
-        <input
-          type="text"
-          value={age}
-          onChange={(event) => setAge(event.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Medical Condition:
-        <input
-          type="text"
-          value={midical_condition}
-          onChange={(event) => setMidical_condition(event.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Image:
-        <input
-          type="text"
-          value={image}
-          onChange={(event) => setImage(event.target.value)}
-        />
-      </label>
-      <br />
-      <button type="submit">Create Game</button>
-    </form>
+    <>
+      <h1 className="newgame-title">New Game</h1>
+      <form onSubmit={handleSubmit} className="newgame-form">
+        <div className="newgame-field">
+          <label className="newgame-label">Name:</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            className="newgame-input"
+          />
+        </div>
+        <div className="newgame-field">
+          <label className="newgame-label">Height:</label>
+          <input
+            type="text"
+            value={height}
+            onChange={(event) => setHeight(event.target.value)}
+            className="newgame-input"
+          />
+        </div>
+        <div className="newgame-field">
+          <label className="newgame-label">Weight:</label>
+          <input
+            type="text"
+            value={weight}
+            onChange={(event) => setWeight(event.target.value)}
+            className="newgame-input"
+          />
+        </div>
+        <div className="newgame-field">
+          <label className="newgame-label">Age:</label>
+          <input
+            type="text"
+            value={age}
+            onChange={(event) => setAge(event.target.value)}
+            className="newgame-input"
+          />
+        </div>
+        <div className="newgame-field">
+          <label className="newgame-label">Medical Condition:</label>
+          <input
+            type="text"
+            value={midical_condition}
+            onChange={(event) => setMidical_condition(event.target.value)}
+            className="newgame-input"
+          />
+        </div>
+        <div className="newgame-field">
+          <label className="newgame-label">Image:</label>
+          <input
+            type="text"
+            value={image}
+            onChange={(event) => setImage(event.target.value)}
+            className="newgame-input"
+          />
+        </div>
+        <button type="submit">Create Game</button>
+      </form>
+    </>
   )
 }
 

@@ -194,3 +194,171 @@ h1 {
   filter: blur(2px);
   transition: filter 0.3s ease;
 }
+.games {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.game-card-container {
+  justify-content: center;
+  margin: 40px;
+}
+
+.game-card {
+  width: 350px;
+  height: 400px;
+  margin: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.game-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
+}
+
+.game-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.game-card p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.button-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.button-list button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #c39acd;
+  color: white;
+  border: none;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.button-list button:hover {
+  background-color: #a27db1;
+}
+
+.game-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background-color: #f7f7f7;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.game-name,
+.gamelist-title,
+.newgame-title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #5b4461;
+}
+
+.game-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.game-image-wrap {
+  flex-basis: 40%;
+  margin: 20px;
+}
+
+.game-info-wrap {
+  flex-basis: 60%;
+  padding: 20px;
+}
+
+.game-image-details {
+  width: 400px;
+
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-section {
+  margin-bottom: 20px;
+  background-color: #c39acd85;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.info-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-section li {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.info-section li span {
+  font-size: 1.5rem;
+  margin-right: 10px;
+  color: #333;
+}
+.newgame-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+}
+
+.newgame-field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+
+.newgame-label {
+  font-size: 1.2rem;
+  color: #333;
+  width: 150px;
+  text-align: left;
+}
+
+.newgame-input {
+  padding: 10px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
