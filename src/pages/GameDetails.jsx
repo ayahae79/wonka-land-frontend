@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from 'react'
-const BASE_URL = 'http://localhost:3000'
+
+import axios from "axios"
+import React, { useState, useEffect } from "react"
+const BASE_URL = "http://localhost:3000"
 const GameDetails = ({ gameId }) => {
   const [gameDetails, setGameDetails] = useState({})
   useEffect(() => {
     const fetchGameDetails = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/games/${gameId}`)
-        const data = await response.json()
+
+        const response = await axios(`${BASE_URL}/game/games/${gameId}`)
+        const data =  response.data
+        console.log(response)
+
         setGameDetails(data)
       } catch (error) {
         console.error(error)
@@ -27,6 +32,7 @@ const GameDetails = ({ gameId }) => {
       <p>Maximum Weight: {gameDetails.weight}</p>
       <p>
         we recomend that people who have medical issue for example:{' '}
+
         {gameDetails.midical_condition} to not try this game
       </p>
     </div>

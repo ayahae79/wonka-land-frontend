@@ -1,23 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import GameCard from '../components/GameCard'
 
-const BASE_URL = 'http://localhost:3000'
+import React, { useState, useEffect } from "react"
+import GameCard from "../components/GameCard"
+import GameDetails from "./GameDetails"
+import axios from "axios"
+import { Link } from "react-router-dom"
+
+const BASE_URL = "http://localhost:3000"
+
 
 const GameList = () => {
   const [games, setGames] = useState([])
   const [selectedGame, setSelectedGame] = useState(null)
 
   useEffect(() => {
-    fetch(`${BASE_URL}/games`)
-      .then((response) => response.send())
-      .then((data) => {
-        setGames(data)
-      })
-      .catch((error) => {
-        console.error(error)
-      })
+
+    getGames()
   }, [])
 
+  const getGames = async () => {
+    const response = await axios.get(`${BASE_URL}/game/games`)
+    setGames(response.data)
+    console.log(games)
+  }
   const handleGameClick = (game) => {
     setSelectedGame(game)
   }
@@ -27,12 +31,13 @@ const GameList = () => {
       <h1>Game List</h1>
       <ul>
         {games.map((game) => (
-          <li key={game._id}>
-            <GameCard game={game} onClick={handleGameClick} />
-          </li>
+          <Link to={"/games/:Id"}>
+            <li key={game._id}>
+              <GameCard game={game} handleGameClick={handleGameClick} />
+            </li>
+          </Link>
         ))}
       </ul>
-      {selectedGame && <GameDetails game={selectedGame} />}
     </div>
   )
 }
