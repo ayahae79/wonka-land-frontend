@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react"
 import { Route, Routes } from "react-router"
 import { CheckSession } from "./services/Auth"
@@ -9,17 +10,16 @@ import GameList from "./pages/GameList"
 import GameDetails from "./pages/GameDetails"
 import CreateGameForm from "./components/NewGame"
 
+
 const App = () => {
   const [user, setUser] = useState(null)
 
   const handleLogOut = () => {
-    // Reset all auth related state and clear localStorage
     setUser(null)
     localStorage.clear()
   }
 
   const checkToken = async () => {
-    // If a token exists, sends token to localStorage to persist logged in user
     const user = await CheckSession()
     setUser(user)
   }
