@@ -27,8 +27,8 @@ const GameList = () => {
       <h1>Game List</h1>
       <ul>
         {games.map((game) => (
-          <Link to={`/games/${game._id}`}>
-            <li key={game._id}>
+          <Link to={`/games/${game._id}`} key={game._id}>
+            <li>
               <GameCard game={game} handleGameClick={handleGameClick} />
             </li>
           </Link>
