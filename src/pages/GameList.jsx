@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import GameCard from '../components/GameCard';
+import React, { useState, useEffect } from 'react'
+import GameCard from '../components/GameCard'
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = 'http://localhost:3000'
 
 const GameList = () => {
-  const [games, setGames] = useState([]);
-  const [selectedGame, setSelectedGame] = useState(null);
+  const [games, setGames] = useState([])
+  const [selectedGame, setSelectedGame] = useState(null)
 
   useEffect(() => {
     fetch(`${BASE_URL}/games`)
-      .then(response => response.send())
-      .then(data => {
-        setGames(data);
+      .then((response) => response.send())
+      .then((data) => {
+        setGames(data)
       })
-      .catch(error => {
-        console.error(error);
-      });
-  }, []);
+      .catch((error) => {
+        console.error(error)
+      })
+  }, [])
 
   const handleGameClick = (game) => {
-    setSelectedGame(game);
-  };
+    setSelectedGame(game)
+  }
 
   return (
     <div>
@@ -34,7 +34,7 @@ const GameList = () => {
       </ul>
       {selectedGame && <GameDetails game={selectedGame} />}
     </div>
-  );
-};
+  )
+}
 
-export default GameList;
+export default GameList

@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react"
-import { Route, Routes } from "react-router"
-import { CheckSession } from "./services/Auth"
-import "./App.css"
-import HomePage from "./components/HomePage"
-import RegisterPage from "./pages/RegisterPage"
-import LoginPage from "./pages/LoginPage"
-import GameList from "./pages/GameList"
-import GameDetails from "./pages/GameDetails"
+import { useState, useEffect } from 'react'
+import { Route, Routes } from 'react-router'
+import { CheckSession } from './services/Auth'
+import './App.css'
+import HomePage from './components/HomePage'
+import RegisterPage from './pages/RegisterPage'
+import LoginPage from './pages/LoginPage'
+import GameList from './pages/GameList'
+import GameDetails from './pages/GameDetails'
 const App = () => {
   const [user, setUser] = useState(null)
 
@@ -23,7 +23,7 @@ const App = () => {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem('token')
 
     if (token) {
       checkToken()
