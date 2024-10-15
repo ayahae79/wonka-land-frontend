@@ -1,3 +1,4 @@
+
 import axios from "axios"
 import React, { useState, useEffect } from "react"
 const BASE_URL = "http://localhost:3000"
@@ -6,9 +7,11 @@ const GameDetails = ({ gameId }) => {
   useEffect(() => {
     const fetchGameDetails = async () => {
       try {
+
         const response = await axios(`${BASE_URL}/game/games/${gameId}`)
         const data =  response.data
         console.log(response)
+
         setGameDetails(data)
       } catch (error) {
         console.error(error)
@@ -22,13 +25,14 @@ const GameDetails = ({ gameId }) => {
       <img
         src={gameDetails.image}
         alt={gameDetails.title}
-        style={{ width: "200px", height: "200px" }}
+        style={{ width: '200px', height: '200px' }}
       />
       <p>Age allowed: {gameDetails.age}</p>
       <p>your Height must be: {gameDetails.height}</p>
       <p>Maximum Weight: {gameDetails.weight}</p>
       <p>
-        we recomend that people who have medical issue for example:{" "}
+        we recomend that people who have medical issue for example:{' '}
+
         {gameDetails.midical_condition} to not try this game
       </p>
     </div>
