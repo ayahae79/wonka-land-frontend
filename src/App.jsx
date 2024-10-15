@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react"
 import { Route, Routes } from "react-router"
 import { CheckSession } from "./services/Auth"
@@ -9,7 +8,6 @@ import LoginPage from "./pages/LoginPage"
 import GameList from "./pages/GameList"
 import GameDetails from "./pages/GameDetails"
 import CreateGameForm from "./components/NewGame"
-
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -27,7 +25,7 @@ const App = () => {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("token")
 
     if (token) {
       checkToken()
@@ -35,17 +33,16 @@ const App = () => {
   }, [])
 
   return (
-
     <div className="app-container">
       <div className="main-content">
-             <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage setUser={setUser} />} />
-        <Route path="/games" element={<GameList />} />
-        <Route path="/games/:Id" element={<GameDetails />} />
-        <Route path="games/creategame" element={<CreateGameForm />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage setUser={setUser} />} />
+          <Route path="/games" element={<GameList />} />
+          <Route path="/games/:id" element={<GameDetails />} />
+          <Route path="games/creategame" element={<CreateGameForm />} />
+        </Routes>
       </div>
       <div className="footer">Wonka Land &copy; </div>
     </div>
