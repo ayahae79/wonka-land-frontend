@@ -5,7 +5,7 @@ import GameCard from './GameCard'
 
 const HomePage = ({ games = [], user }) => {
   const [comments, setComments] = useState([])
-  const [showComments, setShowComments] = useState(false) // State to control comments visibility
+  const [showComments, setShowComments] = useState(false) 
 
   const handleCommentSubmit = (gameId, comment, rating, user) => {
     const newComment = { gameId, text: comment, rating, user }

@@ -1,0 +1,23 @@
+body {
+  height: 100%;
+  margin: 0; 
+}
+
+
+.app-container {
+  display: flex;
+  flex-direction: column; 
+  min-height: 100vh;
+}
+
+
+.main-content {
+  flex: 1; 
+}
+
+
+.footer {
+  margin-top: auto; 
+  text-align: center; 
+  padding: 1rem; 
+}
