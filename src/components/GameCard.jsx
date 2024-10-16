@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom"
 const GameCard = ({ game, user }) => {
   const navigate = useNavigate()
   const isAdmin = user && user.role === "admin"
+
   const handleGameDelete = async (gameId) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this game?"
@@ -32,6 +33,7 @@ const GameCard = ({ game, user }) => {
       )
     }
   }
+
   const handleViewDetails = (gameId) => {
     navigate(`/games/${gameId}`)
   }
