@@ -41,6 +41,8 @@ const GameCard = ({ game, user }) => {
 
   return (
 
+
+
     <div className="game-card-container">
       <div className="game-card">
         <img src={game.image} alt={game.name} className="game-image" />
