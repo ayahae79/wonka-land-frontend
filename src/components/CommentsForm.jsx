@@ -1,17 +1,15 @@
+import React, { useState } from "react"
 
-import React, { useState } from 'react'
-
-const CommentForm = ({ gameId, user, onCommentSubmit }) => {
-  const [comment, setComment] = useState('')
+const CommentForm = ({ gamesId, user, onCommentSubmit }) => {
+  const [comment, setComment] = useState("")
   const [rating, setRating] = useState(0)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-   
-    onCommentSubmit(gameId, comment, rating, user)
 
-   
-    setComment('')
+    onCommentSubmit(gamesId, comment, rating, user)
+
+    setComment("")
     setRating(0)
   }
 
