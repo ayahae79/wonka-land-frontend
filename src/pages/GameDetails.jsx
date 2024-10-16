@@ -1,17 +1,19 @@
 import axios from "axios"
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import CommentForm from "../components/CommentsForm" // Ensure this path is correct
+import CommentForm from "../components/CommentsForm"
+import CommentsList from "../components/CommentsList"
 const BASE_URL = "http://localhost:3000"
 
 const GameDetails = ({ user }) => {
-  const { id } = useParams()
-
+  const { id } = useParams() // Get game ID from URL params
   const gamesId = id
+
   const [gameDetails, setGameDetails] = useState({})
   const [comments, setComments] = useState([]) // State to hold comments
 
   useEffect(() => {
+    // Fetch game details
     const fetchGameDetails = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/game/games/${gamesId}`)
@@ -21,39 +23,30 @@ const GameDetails = ({ user }) => {
       }
     }
 
+    // Fetch comments for the game
     const fetchComments = async () => {
       try {
         const response = await axios.get(
           `${BASE_URL}/game/games/${gamesId}/comments`
-        ) // Adjust the endpoint as necessary
-        setComments(response.data.comments) // Set comments from response
+        ) // Make sure the route is correct
+        setComments(response.data.comments) // Store comments in state
       } catch (error) {
         console.error("Error fetching comments:", error)
       }
     }
+
     fetchGameDetails()
     fetchComments()
   }, [gamesId])
 
-  const handleCommentSubmit = async (gameId, comment, rating, user) => {
-    console.log({
-      gameId: gameId,
-      comment: comment,
-      rating: rating,
-      user: user,
-    })
-
+  // Handler for submitting new comments
+  const handleCommentSubmit = async (newComment) => {
     try {
-      const response = await axios.post(`${BASE_URL}/review/add`, {
-        game: gameId,
-        comment,
-        rate: rating,
-        user: user.id, // Ensure userId is passed correctly
-      })
-      console.log(response)
-      console.log("New comment added:", response.data)
-      // Update comments state with the new comment
-      setComments((prevComments) => [...prevComments, response.data.review])
+      const response = await axios.post(
+        `${BASE_URL}/game/games/${gamesId}/comments`,
+        newComment
+      )
+      setComments((prevComments) => [...prevComments, response.data]) // Add new comment to the list
     } catch (error) {
       console.error("Error submitting comment:", error)
     }
@@ -91,49 +84,8 @@ const GameDetails = ({ user }) => {
       </p>
 
       <h2>Comments</h2>
-      <div
-        className="comments-container"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "15px",
-          marginTop: "20px",
-        }}
-      >
-        {comments.map((comment) => (
-          <div
-            key={comment._id}
-            className="comment-card"
-            style={{
-              backgroundColor: "#f9f9f9",
-              border: "1px solid #ddd",
-              borderRadius: "8px",
-              padding: "15px",
-              transition: "box-shadow 0.3s ease",
-              boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
-            }}
-          >
-            <div
-              className="comment-header"
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <strong className="comment-user">{comment.user}</strong>
-              <span className="comment-rating">Rating: {comment.rate}/10</span>
-            </div>
-            <p className="comment-content">{comment.comment}</p>
-          </div>
-        ))}
-      </div>
-      {/* Comment Form */}
-      <CommentForm
-        gamesId={gamesId}
-        user={user} // Replace with actual user ID data
-        onCommentSubmit={handleCommentSubmit}
-      />
+      <CommentsList comments={comments} />
+      <CommentForm onSubmit={handleCommentSubmit} user={user} />
     </div>
   )
 }
