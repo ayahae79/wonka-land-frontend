@@ -37,5 +37,4 @@ const CommentForm = ({ gamesId, user, onCommentSubmit }) => {
     </form>
   )
 }
-
 export default CommentForm

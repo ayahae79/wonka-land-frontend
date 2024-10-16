@@ -40,13 +40,25 @@ const GameDetails = ({ user }) => {
   }, [gamesId])
 
   // Handler for submitting new comments
-  const handleCommentSubmit = async (newComment) => {
+  const handleCommentSubmit = async (gameId, comment, rating, user) => {
+    console.log({
+      gameId: gameId,
+      comment: comment,
+      rating: rating,
+      user: user,
+    })
+
     try {
-      const response = await axios.post(
-        `${BASE_URL}/game/games/${gamesId}/comments`,
-        newComment
-      )
-      setComments((prevComments) => [...prevComments, response.data]) // Add new comment to the list
+      const response = await axios.post(`${BASE_URL}/review/add`, {
+        game: gameId,
+        comment,
+        rate: rating,
+        user: user.id, // Ensure userId is passed correctly
+      })
+      console.log(response)
+      console.log("New comment added:", response.data)
+      // Update comments state with the new comment
+      setComments((prevComments) => [...prevComments, response.data.review])
     } catch (error) {
       console.error("Error submitting comment:", error)
     }
@@ -85,7 +97,11 @@ const GameDetails = ({ user }) => {
 
       <h2>Comments</h2>
       <CommentsList comments={comments} />
-      <CommentForm onSubmit={handleCommentSubmit} user={user} />
+      <CommentForm
+        gamesId={gamesId}
+        user={user}
+        onCommentSubmit={handleCommentSubmit}
+      />
     </div>
   )
 }
