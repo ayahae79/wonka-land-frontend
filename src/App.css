@@ -278,29 +278,21 @@ h1 {
 
 .game-content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 }
-
-.game-image-wrap {
-  flex-basis: 40%;
-  margin: 20px;
-}
-
-.game-info-wrap {
-  flex-basis: 60%;
-  padding: 20px;
-}
-
 .game-image-details {
-  width: 400px;
-
+  width: 720px;
+  height: 500px;
   object-fit: cover;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 .info-section {
+  width: 700px;
+  text-align: center;
   margin-bottom: 20px;
   background-color: #c39acd85;
   padding: 20px;
@@ -312,12 +304,14 @@ h1 {
   font-size: 1.5rem;
   margin-bottom: 10px;
   color: #333;
+  text-align: center;
 }
 
 .info-section ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  text-align: center;
 }
 
 .info-section li {
@@ -361,4 +355,32 @@ h1 {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 300px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #ccc;
+}
+
+nav h3 {
+  margin: 0;
+  font-size: 1.5rem;
 }
