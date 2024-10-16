@@ -95,12 +95,17 @@ const GameDetails = ({ user }) => {
         this game.
       </p>
 
-      <CommentsList comments={comments} />
-      <CommentForm
-        gamesId={gamesId}
-        user={user}
-        onCommentSubmit={handleCommentSubmit}
-      />
+      <div className="comment-container">
+        <CommentsList comments={comments} />
+      </div>
+
+      <div className="comment-form-container">
+        <CommentForm
+          gamesId={gamesId}
+          user={user}
+          onCommentSubmit={handleCommentSubmit}
+        />
+      </div>
     </div>
   )
 }
