@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 
 const CommentsList = ({ comments }) => {
   return (
@@ -7,17 +7,15 @@ const CommentsList = ({ comments }) => {
       {comments.length === 0 ? (
         <p>No comments yet.</p>
       ) : (
-        comments.map((comment, index) => (
-          <div key={index}>
+        comments.map((comment) => (
+          <div key={comment._id} className="comment">
             <p>
-              <strong>User:</strong> {comment.user.name}
-            </p>
-            <p>
-              <strong>Comment:</strong> {comment.text}
-            </p>
-            <p>
-              <strong>Rating:</strong> {comment.rating}
-            </p>
+              <span className="material-icons input-icon">person</span>
+              <strong> Anonymous User Says:</strong>
+            </p>{" "}
+            {/* Display the username */}
+            <p>{comment.comment}</p>
+            <p>Rating: {comment.rate}</p>
           </div>
         ))
       )}
