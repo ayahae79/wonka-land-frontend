@@ -8,7 +8,6 @@ body {
   background: #faf1fd;
 }
 
-
 .app-container {
   display: flex;
   flex-direction: column;
@@ -49,7 +48,7 @@ body {
   border: 2px solid #8707ff; /* Purple border */
   border-radius: 10px;
   padding: 10px 15px; /* Adjusted padding for better appearance */
-  background:white; /* Transparent background */
+  background: white; /* Transparent background */
   width: 300px; /* Fixed width for the input */
   height: 50; /* Fixed height for the input */
   resize: none; /* Prevent resizing */
@@ -452,10 +451,6 @@ h1 {
   cursor: pointer;
 }
 
-.button-list button:hover {
-  background-color: #a27db1;
-}
-
 .game-details-container {
   display: flex;
   flex-direction: column;
@@ -658,4 +653,117 @@ h1 {
   border-radius: 8px;
   padding: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+/* GameList.css */
+
+.wonka-list {
+  background-color: #edeaeb; /* Light yellow background */
+  padding: 20px;
+  /* background-image: url("https://i.pinimg.com/564x/71/59/09/71590933282bc81719a123335fcfac12.jpg"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+.custom-btn {
+  background-color: #c91fea;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  /* padding: 15px 30px; */
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: none;
+  margin-bottom: 1000px;
+}
+
+.custom-btn:hover {
+  background-image: linear-gradient(
+    90deg,
+    #53cbef 0%,
+    #dcc66c 50%,
+    #ffa3b6 75%,
+    #53cbef 100%
+  );
+  animation: slidernbw 5s linear infinite;
+  color: #000000;
+}
+
+@keyframes slidernbw {
+  to {
+    background-position: 20vw;
+  }
+}
+
+.wonka-title {
+  text-align: center;
+  font-family: "Chocolate", cursive; /* You can use a fun font */
+  color: #6f4c3e; /* Chocolate color */
+}
+
+.wonka-game-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+}
+
+.wonka-game-card {
+  background-color: #fff9c4; /* Light cream background */
+  border: 2px solid #ffb405; /* Brown border */
+  border-radius: 10px;
+  padding: 15px;
+  background-image: url("https://img.freepik.com/premium-vector/groovy-hippie-retro-style-background-with-pastel-colored-twisted-waves_729684-1595.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.wonka-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.wonka-button {
+  background-color: #ffb74d; /* Orange color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.wonka-button:hover {
+  background-color: #ff9800; /* Darker orange on hover */
+}
+
+.delete-button {
+  background-color: #e57373; /* Red color for delete button */
+}
+
+.delete-button:hover {
+  background-color: #ef5350; /* Darker red on hover */
+}
+
+.view-button {
+  background-color: #64b5f6; /* Blue color for view button */
+}
+
+.view-button:hover {
+  background-color: #42a5f5; /* Darker blue on hover */
+}
+.game-image {
+  align-self: center;
+}
+.comment-form-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }

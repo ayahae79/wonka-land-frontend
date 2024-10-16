@@ -9,7 +9,7 @@
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
-.custom-btn  {
+.custom-btn {
   background-color: #c91fea;
   border-radius: 4px;
   color: #fff;
@@ -20,23 +20,29 @@
   letter-spacing: 1px;
   border: none;
   margin-bottom: 1000px;
- }
- 
- .custom-btn:hover {
-  background-image: linear-gradient(90deg, #53cbef 0%, #dcc66c 50%, #ffa3b6 75%, #53cbef 100%);
+}
+
+.custom-btn:hover {
+  background-image: linear-gradient(
+    90deg,
+    #53cbef 0%,
+    #dcc66c 50%,
+    #ffa3b6 75%,
+    #53cbef 100%
+  );
   animation: slidernbw 5s linear infinite;
   color: #000000;
- }
- 
- @keyframes slidernbw {
+}
+
+@keyframes slidernbw {
   to {
-   background-position: 20vw;
+    background-position: 20vw;
   }
- }
+}
 
 .wonka-title {
   text-align: center;
-  font-family: 'Chocolate', cursive; /* You can use a fun font */
+  font-family: "Chocolate", cursive; /* You can use a fun font */
   color: #6f4c3e; /* Chocolate color */
 }
 
@@ -97,6 +103,6 @@
 .view-button:hover {
   background-color: #42a5f5; /* Darker blue on hover */
 }
-.game-image{
+.game-image {
   align-self: center;
 }
