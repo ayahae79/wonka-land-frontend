@@ -17,13 +17,14 @@ const CommentForm = ({ gameId, user, onCommentSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <textarea
+      <div className='thebutton'>
+      <textarea className='input'
         value={comment}
         onChange={(e) => setComment(e.target.value)}
         placeholder="Add a comment"
         required
       />
-      <select
+      <select className='rating'
         value={rating}
         onChange={(e) => setRating(e.target.value)}
         required
@@ -35,7 +36,10 @@ const CommentForm = ({ gameId, user, onCommentSubmit }) => {
           </option>
         ))}
       </select>
-      <button type="submit">Submit</button>
+      </div>
+<button class="btn-96"><span>Sumbit</span></button>
+
+      {/* <button className="btn-96 type="submit">Submit</button> */}
     </form>
   )
 }
