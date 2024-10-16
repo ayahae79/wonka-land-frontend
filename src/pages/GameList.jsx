@@ -1,10 +1,9 @@
+import React, { useState, useEffect } from 'react'
+import GameCard from '../components/GameCard'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
 
-import React, { useState, useEffect } from "react"
-import GameCard from "../components/GameCard"
-import axios from "axios"
-import { Link } from "react-router-dom"
-
-const BASE_URL = "http://localhost:3000"
+const BASE_URL = 'http://localhost:3000'
 
 const GameList = () => {
   const [games, setGames] = useState([])
@@ -32,12 +31,12 @@ const GameList = () => {
 
     try {
       const response = await axios.delete(`${BASE_URL}/game/games/${gameId}`)
-      console.log('Delete response:', response) 
+      console.log('Delete response:', response)
       if (response.status === 200) {
-        console.log('Current games:', games) 
+        console.log('Current games:', games)
         setGames((prevGames) => {
           const updatedGames = prevGames.filter((game) => game._id !== gameId)
-          console.log('Updated games after deletion:', updatedGames) 
+          console.log('Updated games after deletion:', updatedGames)
           return updatedGames
         })
         console.log('Game deleted successfully:', gameId)
@@ -55,12 +54,11 @@ const GameList = () => {
       <h1>Game List</h1>
       <ul>
         {games.map((game) => (
-
           <li key={game._id}>
             <GameCard game={game} />
             <button
               onClick={() => handleGameDelete(game._id)}
-              style={{ marginLeft: '10px', float: 'right' }} 
+              style={{ marginLeft: '10px', float: 'right' }}
             >
               Delete
             </button>
@@ -68,7 +66,6 @@ const GameList = () => {
               <button style={{ marginLeft: '10px' }}>View Details</button>
             </Link>
           </li>
-
         ))}
       </ul>
     </div>
