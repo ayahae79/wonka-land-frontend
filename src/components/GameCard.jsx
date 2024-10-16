@@ -1,3 +1,4 @@
+
 // src/components/GameCard.jsx
 import React from "react"
 import { Link, useNavigate } from "react-router-dom"
@@ -37,7 +38,9 @@ const GameCard = ({ game, user }) => {
     navigate(`/games/${gameId}`)
   }
 
+
   return (
+
     <div className="game-card-container">
       <div className="game-card">
         <img src={game.image} alt={game.name} className="game-image" />
@@ -51,8 +54,9 @@ const GameCard = ({ game, user }) => {
           </button>
         </div>
       </div>
-    </div>
-  )
-}
 
-export default GameCard
+    </div>
+  );
+};
+
+export default GameCard;

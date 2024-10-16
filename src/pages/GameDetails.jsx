@@ -1,26 +1,45 @@
+
 import axios from "axios"
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 
 const BASE_URL = "http://localhost:3000"
+import CommentForm from '../components/CommentsForm'
 
 const GameDetails = () => {
   const { id } = useParams()
   const [gameDetails, setGameDetails] = useState({})
 
+  const [comments, setComments] = useState([]) // State to hold comments
+
+
   useEffect(() => {
     const fetchGameDetails = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/game/games/${id}`)
-        const data = response.data
-        console.log(data)
-        setGameDetails(data)
+
+        setGameDetails(response.data)
       } catch (error) {
-        console.error(error)
+        console.error('Error fetching game details:', error)
       }
     }
+
+    const fetchComments = async () => {
+      try {
+        const response = await axios.get(
+          `${BASE_URL}/game/games/${id}/comments`
+        ) // Adjust the endpoint as necessary
+        setComments(response.data.comments) // Set comments from response
+
+      } catch (error) {
+        console.error('Error fetching comments:', error)
+      }
+    }
+
     fetchGameDetails()
+    fetchComments()
   }, [id])
+
 
   return (
     <div className="game-details-container">
@@ -64,7 +83,43 @@ const GameDetails = () => {
             </ul>
           </div>
         </div>
+{comments.map((comment) => (
+          <div
+            key={comment._id}
+            className="comment-card"
+            style={{
+              backgroundColor: '#f9f9f9',
+              border: '1px solid #ddd',
+              borderRadius: '8px',
+              padding: '15px',
+              transition: 'box-shadow 0.3s ease',
+              boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
+            }}
+          >
+            <div
+              className="comment-header"
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+              }}
+            >
+              <strong className="comment-user">{comment.user}</strong>
+              <span className="comment-rating">Rating: {comment.rate}/10</span>
+            </div>
+            <p className="comment-content">{comment.comment}</p>
+          </div>
+        ))}
       </div>
+
+      {/* Comment Form */}
+      <CommentForm
+        gameId={id}
+        userId={'User ID'} // Replace with actual user ID data
+        onCommentSubmit={handleCommentSubmit}
+      />
+      </div>
+
     </div>
   )
 }
