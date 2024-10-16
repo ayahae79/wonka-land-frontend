@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { RegisterUser } from "../services/Auth"
 import background from "../assets/Background2.jpg"
-import "../css/RegisterPage.css"
+// import "../css/RegisterPage.css"
 
 const RegisterPage = () => {
   let navigate = useNavigate()
@@ -31,17 +31,13 @@ const RegisterPage = () => {
   }
 
   return (
-    <div className="register-page">
+    <div className="form-container">
       <div className="left-side">
         <img src={background} alt="Background" className="background-image" />
       </div>
       <div className="right-side">
         <form onSubmit={handleSubmit} className="register-form">
           <h1 className="register-title">Join the Wonka Adventure!</h1>
-          <p className="register-subtitle">
-            Register to explore the magic of Wonka Land
-          </p>
-
           <div className="input-wrapper">
             <span className="material-icons input-icon">person</span>
             <label htmlFor="username">Username</label>
@@ -49,39 +45,37 @@ const RegisterPage = () => {
               type="text"
               name="username"
               id="username"
+              placeholder="Enter your username"
               value={formValues.username}
               onChange={handleChange}
               required
             />
           </div>
-
           <div className="input-wrapper">
             <span className="material-icons input-icon">email</span>
             <label htmlFor="email">Email</label>
             <input
-              type="email"
-              name="email"
-              id="email"
-              value={formValues.email}
               onChange={handleChange}
+              name="email"
+              type="email"
+              placeholder="example@example.com"
+              value={formValues.email}
               required
             />
           </div>
-
           <div className="input-wrapper">
             <span className="material-icons input-icon">lock</span>
             <label htmlFor="password">Password</label>
             <input
-              type="password"
-              name="password"
-              id="password"
-              value={formValues.password}
               onChange={handleChange}
+              name="password"
+              type="password"
+              placeholder="Enter your password"
+              value={formValues.password}
               required
             />
           </div>
-
-          <button type="submit">Register</button>
+          <button type="submit">Login</button>
         </form>
       </div>
     </div>
