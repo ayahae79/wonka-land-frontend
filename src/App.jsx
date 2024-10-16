@@ -25,7 +25,7 @@ const App = () => {
     checkToken()
   }, [])
 
-  console.log(user.role)
+  console.log(user)
 
   return (
     <div className="app-container">
@@ -37,7 +37,10 @@ const App = () => {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage setUser={setUser} />} />
             <Route path="/games" element={<GameList user={user.data} />} />
-            <Route path="/games/:id" element={<GameDetails />} />
+            <Route
+              path="/games/:id"
+              element={<GameDetails user={user.data} />}
+            />
             <Route path="games/creategame" element={<CreateGameForm />} />
           </Routes>
         </main>

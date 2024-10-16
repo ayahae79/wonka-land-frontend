@@ -3,14 +3,18 @@ import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import CommentForm from "../components/CommentsForm" // Ensure this path is correct
 const BASE_URL = "http://localhost:3000"
-const GameDetails = () => {
+
+const GameDetails = ({ user }) => {
   const { id } = useParams()
+
+  const gamesId = id
   const [gameDetails, setGameDetails] = useState({})
   const [comments, setComments] = useState([]) // State to hold comments
+
   useEffect(() => {
     const fetchGameDetails = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/game/games/${id}`)
+        const response = await axios.get(`${BASE_URL}/game/games/${gamesId}`)
         setGameDetails(response.data)
       } catch (error) {
         console.error("Error fetching game details:", error)
@@ -20,7 +24,7 @@ const GameDetails = () => {
     const fetchComments = async () => {
       try {
         const response = await axios.get(
-          `${BASE_URL}/game/games/${id}/comments`
+          `${BASE_URL}/game/games/${gamesId}/comments`
         ) // Adjust the endpoint as necessary
         setComments(response.data.comments) // Set comments from response
       } catch (error) {
@@ -29,14 +33,22 @@ const GameDetails = () => {
     }
     fetchGameDetails()
     fetchComments()
-  }, [id])
-  const handleCommentSubmit = async (gameId, comment, rating, userId) => {
+  }, [gamesId])
+
+  const handleCommentSubmit = async (gameId, comment, rating, user) => {
+    console.log({
+      gameId: gameId,
+      comment: comment,
+      rating: rating,
+      user: user,
+    })
+
     try {
       const response = await axios.post(`${BASE_URL}/review/add`, {
-        gameId,
+        game: gameId,
         comment,
         rate: rating,
-        userId, // Ensure userId is passed correctly
+        user: user.id, // Ensure userId is passed correctly
       })
       console.log(response)
       console.log("New comment added:", response.data)
@@ -46,6 +58,7 @@ const GameDetails = () => {
       console.error("Error submitting comment:", error)
     }
   }
+
   return (
     <div
       className="game-details"
@@ -76,7 +89,7 @@ const GameDetails = () => {
         medical issues, for example: {gameDetails.midical_condition} to not try
         this game.
       </p>
-      <p>id = {gameDetails._ids}</p>
+
       <h2>Comments</h2>
       <div
         className="comments-container"
@@ -117,8 +130,8 @@ const GameDetails = () => {
       </div>
       {/* Comment Form */}
       <CommentForm
-        gameId={id}
-        userId={"User ID"} // Replace with actual user ID data
+        gamesId={gamesId}
+        user={user} // Replace with actual user ID data
         onCommentSubmit={handleCommentSubmit}
       />
     </div>
