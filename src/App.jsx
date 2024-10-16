@@ -11,36 +11,32 @@ import CreateGameForm from "./components/NewGame"
 import Nav from "./components/Nav"
 
 const App = () => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState({ data: null, role: null })
 
   const handleLogOut = () => {
-    setUser(null)
-    localStorage.clear()
-  }
-
-  const checkToken = async () => {
-    const user = await CheckSession()
-    setUser(user)
+    setUser({ data: null, role: null })
   }
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
-
-    if (token) {
-      checkToken()
+    const checkToken = async () => {
+      const userData = await CheckSession()
+      setUser({ data: userData, role: userData.role })
     }
+    checkToken()
   }, [])
+
+  console.log(user.role)
 
   return (
     <div className="app-container">
       <div className="main-content">
-        <Nav user={user} handleLogOut={handleLogOut} />
+        <Nav user={user.data} handleLogOut={handleLogOut} />
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage setUser={setUser} />} />
-            <Route path="/games" element={<GameList />} />
+            <Route path="/games" element={<GameList user={user.data} />} />
             <Route path="/games/:id" element={<GameDetails />} />
             <Route path="games/creategame" element={<CreateGameForm />} />
           </Routes>

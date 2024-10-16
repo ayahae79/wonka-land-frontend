@@ -1,29 +1,28 @@
 import { Link } from "react-router-dom"
 
 const Nav = ({ user, handleLogOut }) => {
-  let userOptions
-  if (user) {
-    userOptions = (
-      <nav>
-        <Link to="/">Home</Link>
-        <Link onClick={handleLogOut} to="/">
-          Sign Out
-        </Link>
-        <Link to="/games">Game List</Link>
-      </nav>
-    )
-  } else {
-    const adminOptions = (
-      <nav>
-        <Link to="/">Home</Link>
-        <Link onClick={handleLogOut} to="/">
-          Sign Out
-        </Link>
-        <Link to="/games">Game List</Link>
-        <Link to="/games/creategame"> Add Games</Link>
-      </nav>
-    )
-  }
+  const isAdmin = user && user.role === "admin"
+
+  const adminOptions = (
+    <nav>
+      <Link to="/">Home</Link>
+      <Link onClick={handleLogOut} to="/">
+        Sign Out
+      </Link>
+      <Link to="/games">Game List</Link>
+      <Link to="/games/creategame">Add Games</Link>
+    </nav>
+  )
+
+  const userOptions = (
+    <nav>
+      <Link to="/">Home</Link>
+      <Link onClick={handleLogOut} to="/">
+        Sign Out
+      </Link>
+      <Link to="/games">Game List</Link>
+    </nav>
+  )
 
   const publicOptions = (
     <nav>
@@ -33,7 +32,11 @@ const Nav = ({ user, handleLogOut }) => {
     </nav>
   )
 
-  return <header>{user ? userOptions : publicOptions}</header>
+  return (
+    <header>
+      {isAdmin ? adminOptions : user ? userOptions : publicOptions}
+    </header>
+  )
 }
 
 export default Nav

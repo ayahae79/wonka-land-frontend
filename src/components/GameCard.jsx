@@ -2,8 +2,9 @@
 import React from "react"
 import { Link, useNavigate } from "react-router-dom"
 
-const GameCard = ({ game }) => {
+const GameCard = ({ game, user }) => {
   const navigate = useNavigate()
+  const isAdmin = user && user.role === "admin"
 
   const handleGameDelete = async (gameId) => {
     const confirmDelete = window.confirm(
@@ -42,7 +43,9 @@ const GameCard = ({ game }) => {
         <img src={game.image} alt={game.name} className="game-image" />
         <h2>{game.name}</h2>
         <div className="button-list">
-          <button onClick={() => handleGameDelete(game._id)}>Delete</button>
+          {isAdmin && (
+            <button onClick={() => handleGameDelete(game._id)}>Delete</button>
+          )}
           <button onClick={() => handleViewDetails(game._id)}>
             View Details
           </button>

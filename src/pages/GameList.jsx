@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 const BASE_URL = "http://localhost:3000"
 
-const GameList = () => {
+const GameList = ({ user }) => {
   const [games, setGames] = useState([])
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const GameList = () => {
       <div className="games">
         {games.map((game) => (
           <div key={game._id}>
-            <GameCard game={game} />
+            <GameCard game={game} user={user} />
           </div>
         ))}
       </div>
