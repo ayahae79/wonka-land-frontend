@@ -88,6 +88,9 @@ h1 {
   position: relative;
 }
 
+.form-container {
+  display: flex;
+}
 .left-side .background-image {
   width: 100%;
   height: 100%;
