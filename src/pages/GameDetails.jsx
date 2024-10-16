@@ -1,19 +1,23 @@
-import axios from 'axios'
-import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import CommentForm from '../components/CommentsForm' // Ensure this path is correct
 
-const BASE_URL = 'http://localhost:3000'
+import axios from "axios"
+import React, { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
+
+const BASE_URL = "http://localhost:3000"
+import CommentForm from '../components/CommentsForm'
 
 const GameDetails = () => {
   const { id } = useParams()
   const [gameDetails, setGameDetails] = useState({})
+
   const [comments, setComments] = useState([]) // State to hold comments
+
 
   useEffect(() => {
     const fetchGameDetails = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/game/games/${id}`)
+
         setGameDetails(response.data)
       } catch (error) {
         console.error('Error fetching game details:', error)
@@ -26,6 +30,7 @@ const GameDetails = () => {
           `${BASE_URL}/game/games/${id}/comments`
         ) // Adjust the endpoint as necessary
         setComments(response.data.comments) // Set comments from response
+
       } catch (error) {
         console.error('Error fetching comments:', error)
       }
@@ -35,67 +40,50 @@ const GameDetails = () => {
     fetchComments()
   }, [id])
 
-  const handleCommentSubmit = async (gameId, comment, rating, userId) => {
-    try {
-      const response = await axios.post(`${BASE_URL}/review/add`, {
-        gameId,
-        comment,
-        rate: rating,
-        userId // Ensure userId is passed correctly
-      })
-      console.log(response)
-
-      console.log('New comment added:', response.data)
-
-      // Update comments state with the new comment
-      setComments((prevComments) => [...prevComments, response.data.review])
-    } catch (error) {
-      console.error('Error submitting comment:', error)
-    }
-  }
 
   return (
-    <div
-      className="game-details"
-      style={{
-        maxWidth: '800px',
-        margin: '0 auto',
-        padding: '20px',
-        fontFamily: 'Arial, sans-serif'
-      }}
-    >
-      <h1>{gameDetails.name}</h1>
-      <img
-        src={gameDetails.image}
-        alt={gameDetails.title}
-        style={{ width: '200px', height: '200px' }}
-      />
-      <p>
-        <strong>Age allowed:</strong> {gameDetails.age}
-      </p>
-      <p>
-        <strong>Your Height must be:</strong> {gameDetails.height}
-      </p>
-      <p>
-        <strong>Maximum Weight:</strong> {gameDetails.weight}
-      </p>
-      <p>
-        <strong>Health Advisory:</strong> We recommend that people who have
-        medical issues, for example: {gameDetails.midical_condition} to not try
-        this game.
-      </p>
-      <p>id = {gameDetails._ids}</p>
-      <h2>Comments</h2>
-      <div
-        className="comments-container"
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '15px',
-          marginTop: '20px'
-        }}
-      >
-        {comments.map((comment) => (
+    <div className="game-details-container">
+      <div className="game-header">
+        <h1 className="game-name">{gameDetails.name}</h1>
+      </div>
+      <div className="game-content">
+        <div className="game-image-wrap">
+          <img
+            src={gameDetails.image}
+            alt={gameDetails.title}
+            className="game-image-details"
+          />
+        </div>
+        <div className="game-info-wrap">
+          <div className="info-section">
+            <h3>Get Ready for Adventure!</h3>
+            <ul>
+              <li>
+                <span class="material-symbols-outlined">person_check</span>
+                Age allowed: {gameDetails.age}
+              </li>
+              <li>
+                <span className="material-icons">height</span> your Height must
+                be: {gameDetails.height}
+              </li>
+              <li>
+                <span class="material-symbols-outlined">
+                  monitor_weight_gain
+                </span>
+                Maximum Weight: {gameDetails.weight}
+              </li>
+              <h3>Important Notes</h3>
+              <li>
+                <span className="material-icons ">local_hospital</span>
+                <p>
+                  we recomend that people who have medical issue for example:
+                  {gameDetails.midical_condition} to not try this game
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+{comments.map((comment) => (
           <div
             key={comment._id}
             className="comment-card"
@@ -130,6 +118,8 @@ const GameDetails = () => {
         userId={'User ID'} // Replace with actual user ID data
         onCommentSubmit={handleCommentSubmit}
       />
+      </div>
+
     </div>
   )
 }
