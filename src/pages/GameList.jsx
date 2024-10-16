@@ -6,8 +6,11 @@ import "../css/GameList.css" // Import the CSS file for styles
 
 const BASE_URL = "http://localhost:3000";
 
-const GameList = () => {
-  const [games, setGames] = useState([]);
+
+
+const GameList = ({ user }) => {
+  const [games, setGames] = useState([])
+
 
   useEffect(() => {
     getGames();
@@ -17,10 +20,7 @@ const GameList = () => {
     try {
       const response = await axios.get(`${BASE_URL}/game/games`);
       setGames(response.data);
-    } catch (error) {
-      console.error('Failed to fetch games:', error);
-    }
-  };
+    } 
 
   const handleGameDelete = async (gameId) => {
     const confirmDelete = window.confirm('Are you sure you want to delete this game?');
@@ -33,27 +33,23 @@ const GameList = () => {
       }
     } catch (error) {
       console.error('Failed to delete the game:', error.response ? error.response.data : error.message);
+
+
+      console.error("Failed to fetch games:", error)
+
     }
   };
 
   return (
-    <div className="wonka-list">
-      <h1 className="wonka-title">Game List</h1>
-      <div className="wonka-game-grid">
+
+
+    <div>
+      <h1 className="gamelist-title">Game List</h1>
+      <div className="games">
         {games.map((game) => (
-          <div key={game._id} className="wonka-game-card">
-            <GameCard game={game} />
-            <div className="wonka-buttons">
-              <button
-                onClick={() => handleGameDelete(game._id)}
-                className="wonka-button delete-button"
-              >
-                Delete
-              </button>
-              <Link to={`/games/${game._id}`}>
-                <button className="custom-btn">View Details</button>
-              </Link>
-            </div>
+          <div key={game._id}>
+            <GameCard game={game} user={user} />
+
           </div>
         ))}
       </div>

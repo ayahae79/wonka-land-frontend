@@ -2,7 +2,6 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { SignInUser } from "../services/Auth"
 import background from "../assets/Background2.jpg"
-import "../css/login.css"
 
 const LoginPage = ({ setUser }) => {
   let navigate = useNavigate()
@@ -27,12 +26,12 @@ const LoginPage = ({ setUser }) => {
   }
 
   return (
-    <div className="login-page">
+    <div className="form-container">
       <div className="left-side">
         <img src={background} alt="Background" className="background-image" />
       </div>
       <div className="right-side">
-        <form className="register-form" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="register-form">
           <h1 className="register-title">
             Welcome Back to the Wonka Adventure!
           </h1>
