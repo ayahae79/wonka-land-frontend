@@ -95,7 +95,6 @@ const GameDetails = ({ user }) => {
         this game.
       </p>
 
-      <h2>Comments</h2>
       <CommentsList comments={comments} />
       <CommentForm
         gamesId={gamesId}
