@@ -28,7 +28,7 @@ const HomePage = () => {
             onMouseOver={handleButtonMouseOver}
             onMouseOut={handleButtonMouseOut}
           >
-            Explore Now
+            Welcome to winka park
           </button>
         </Link>
       </div>

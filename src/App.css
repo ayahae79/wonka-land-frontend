@@ -8,6 +8,7 @@ body {
   background: #faf1fd;
 }
 
+
 .app-container {
   display: flex;
   flex-direction: column;
@@ -37,12 +38,45 @@ body {
 .buttn-list button:hover {
   background-color: #a27db1; /* Darker shade on hover */
 }
-
-.form-container {
-  display: flex;
-  height: 100vh;
-  justify-content: space-between;
+.thebutton {
+  display: flex; /* Use flexbox to align items */
+  align-items: center; /* Center align items vertically */
+  gap: 30px; /* Space between elements */
 }
+
+.input {
+  color: white;
+  border: 2px solid #8707ff; /* Purple border */
+  border-radius: 10px;
+  padding: 10px 15px; /* Adjusted padding for better appearance */
+  background:white; /* Transparent background */
+  width: 300px; /* Fixed width for the input */
+  height: 50; /* Fixed height for the input */
+  resize: none; /* Prevent resizing */
+}
+
+.rating {
+  width: 120px; /* Set width for the select box */
+  height: 40px; /* Height for the select box */
+  border: 1px solid #8a5baf; /* Purple border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 5px; /* Padding inside the select box */
+  font-size: 16px; /* Font size for the select box */
+  color: #333; /* Dark gray text color */
+  background-color: #fff; /* White background */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="%238a5baf" d="M6 8.5l-4-4h8z"/></svg>'); /* Custom arrow */
+  background-repeat: no-repeat; /* No repeat for the background image */
+  background-position: right 10px center; /* Position the arrow */
+  background-size: 12px; /* Size of the arrow */
+  transition: border-color 0.3s; /* Transition for border color */
+  margin-top: 0; /* Remove margin top */
+}
+
+.rating:focus {
+  outline: none; /* Remove outline on focus */
+  border-color: #6f4a8e; /* Darker purple on focus */
+}
+
 h1 {
   font-size: 3rem;
 }
@@ -109,6 +143,175 @@ h1 {
 .input-wrapper input:focus {
   border-color: #c9698b;
 }
+/* From Uiverse.io by doniaskima */
+/* .btn-96,
+.btn-96 *,
+.btn-96 :after,
+.btn-96 :before,
+.btn-96:after,
+.btn-96:before {
+  border: 1px solid #8707ff;
+  box-sizing: border-box;
+}
+
+.btn-96 {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: button;
+  background-color: #563d3d;
+  background-image: none;
+  color: #c39292;
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 100%;
+  line-height: 1.5;
+  margin: 0;
+  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+  padding: 0;
+}
+
+.btn-96:disabled {
+  cursor: default;
+}
+
+.btn-96:-moz-focusring {
+  outline: auto;
+}
+
+.btn-96 svg {
+  display: block;
+  vertical-align: middle;
+}
+
+.btn-96 [hidden] {
+  display: none;
+}
+
+.btn-96 {
+  box-sizing: border-box;
+  display: block;
+  font-weight: 900;
+  -webkit-mask-image: none;
+  padding: 2rem 5rem;
+  perspective: 800px;
+  position: relative;
+  text-transform: uppercase;
+  transform-style: preserve-3d;
+}
+
+.btn-96 span {
+  background: #fff;
+  color: #000;
+  display: grid;
+  inset: 0;
+  place-items: center;
+  position: absolute;
+  transform: rotateX(0deg);
+  transform-origin: top center;
+  transition: 0.2s;
+}
+
+.btn-96:hover span {
+  transform: rotateX(35deg);
+}
+
+.btn-96:after,
+.btn-96:before {
+  background: #dbee07;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: rotateX(0deg);
+  width: 100%;
+  z-index: -1;
+}
+
+.btn-96:after {
+  background: #b10ae4;
+  width: 10;
+}
+
+.btn-96:hover:after {
+  -webkit-animation: progress-bar 1.2s;
+  animation: progress-bar 1.2s;
+}
+
+@-webkit-keyframes progress-bar {
+  0% {
+    opacity: 1;
+    width: 0;
+  }
+
+  10% {
+    opacity: 1;
+    width: 15%;
+  }
+
+  25% {
+    opacity: 1;
+    width: 25%;
+  }
+
+  40% {
+    opacity: 1;
+    width: 35%;
+  }
+
+  55% {
+    opacity: 1;
+    width: 75%;
+  }
+
+  60% {
+    opacity: 1;
+    width: 100%;
+  }
+
+  to {
+    opacity: 0;
+    width: 100%;
+  }
+}
+
+@keyframes progress-bar {
+  0% {
+    opacity: 1;
+    width: 0;
+  }
+
+  10% {
+    opacity: 1;
+    width: 15%;
+  }
+
+  25% {
+    opacity: 1;
+    width: 25%;
+  }
+
+  40% {
+    opacity: 1;
+    width: 35%;
+  }
+
+  55% {
+    opacity: 1;
+    width: 75%;
+  }
+
+  60% {
+    opacity: 1;
+    width: 100%;
+  }
+
+  to {
+    opacity: 0;
+    width: 100%;
+  }
+} */
 
 button {
   width: 100%;
@@ -119,11 +322,12 @@ button {
   color: white;
   font-size: 1.2rem;
   cursor: pointer;
+  margin-top: 20px;
   transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #c9698b;
+  background-color: #a574b1;
 }
 .homepage-container {
   position: relative;
@@ -241,7 +445,7 @@ h1 {
 .button-list button {
   padding: 10px 20px;
   border-radius: 5px;
-  background-color: #c39acd;
+  background-color: #403243;
   color: white;
   border: none;
   margin-bottom: 10px;
@@ -407,16 +611,17 @@ h1 {
 }
 
 .comment-card {
-  background-color: #ffffff; 
-  border: 1px solid #e0e0e0; 
-  border-radius: 10px; 
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
   padding: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
 .comment-card:hover {
-  box-shadow: 0 8px 16px rgba(146, 68, 68, 0.15); 
-  transform: translateY(-2px); 
+  box-shadow: 0 8px 16px rgba(146, 68, 68, 0.15);
+  transform: translateY(-2px);
 }
 
 .comment-header {
@@ -427,23 +632,23 @@ h1 {
 
 .comment-user {
   font-weight: bold;
-  color: #333; 
+  color: #333;
 }
 
 .comment-rating {
   font-weight: bold;
-  color: #ffcc00; 
-  transition: color 0.3s ease; 
+  color: #b3a673;
+  transition: color 0.3s ease;
 }
 
 .comment-rating:hover {
-  color: #cc9900; 
+  color: #cc9900;
 }
 
 .comment-content {
   margin-top: 10px;
   line-height: 1.5;
-  color: #555; 
+  color: #555;
 }
 
 .comment-form-container {
